@@ -26,8 +26,8 @@ export default class ClientApplication extends Client {
     super();
 
     this.initializeApplication();
-    this.commandsLoader();
-    this.eventsLoader();
+    this.commandsLoad();
+    this.eventsLoad();
 
     this.commands = new Collection();
     this.aliases = new Collection();
@@ -37,7 +37,7 @@ export default class ClientApplication extends Client {
     return super.login(config.token);
   }
 
-  async commandsLoader(): Promise<void> {
+  async commandsLoad(): Promise<void> {
     readdirSync('./src/Commands').forEach((file: string) => {
       readdirSync('./src/Commands/' + file).forEach(async (subFile: string) => {
         if(!subFile.endsWith('.ts')) return;
@@ -56,7 +56,7 @@ export default class ClientApplication extends Client {
     });
   }
 
-  async eventsLoader(): Promise<void> {
+  async eventsLoad(): Promise<void> {
     readdirSync('./src/events').forEach(async (file: string) => {
       if(!file.endsWith('.ts')) return;
 
