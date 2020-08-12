@@ -4,7 +4,6 @@ import config from '../config/config';
 
 import { readdirSync } from 'fs';
 import { Interface } from 'readline';
-import { props } from '../commands/Mod/mod';
 
 interface InterfaceProps {
   info: {
@@ -34,7 +33,7 @@ export default class ClientApplication extends Client {
   }
 
   initializeApplication() {
-    return super.login(config.token);
+    return super.login(config.tokenClient);
   }
 
   async commandsLoad(): Promise<void> {
